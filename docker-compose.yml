@@ -1,0 +1,54 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dbspringboot
+      TZ: UTC
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+      start_period: 20s
+    restart: unless-stopped
+
+  api:
+    image: loja-api:1.0
+    build:
+      context: ./springboot/demo     # confirme que o Dockerfile está aqui
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/dbspringboot?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      PORT: "8089"                   # seu app usa ${PORT:8089}
+      TZ: UTC
+      SPRING_SQL_INIT_MODE: always
+      SPRING_SQL_INIT_SCHEMA_LOCATIONS: classpath:schema.sql
+      SPRING_JPA_HIBERNATE_DDL_AUTO: none
+    ports:
+      - "8090:8089"
+    restart: unless-stopped
+
+  adminer:
+    image: adminer
+    depends_on:
+      - db
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+
+volumes:
+  db_data:

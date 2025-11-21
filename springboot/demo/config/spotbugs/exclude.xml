@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+    <Match>
+        <Class name="~com\.example\.demo\.api\.model\..*"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Class name="~com\.example\.demo\.api\.dto\..*"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+    <Match>
+        <Class name="com.example.demo.api.security.FilialDetails"/>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2,SE_TRANSIENT_FIELD_NOT_RESTORED"/>
+    </Match>
+    <Match>
+        <Class name="com.example.demo.api.security.SecurityConfig"/>
+        <Bug pattern="EI_EXPOSE_REP2"/>
+    </Match>
+</FindBugsFilter>
