@@ -1,4 +1,6 @@
 /home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/service/FerramentaServiceTest.java
+/home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/controller/FerramentaControllerTest.java
+/home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/controller/MaterialConstrucaoControllerTest.java
 /home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/service/FilialServiceTest.java
 /home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/service/MaterialConstrucaoServiceTest.java
 /home/marco/apresentacao/api-crud-contrucao/springboot/demo/src/test/java/com/example/demo/api/FilialIntegrationTest.java

@@ -1,0 +1,437 @@
+Warning: JAVA_HOME environment variable is not set.
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------------------< com.example:demo >--------------------------
+[INFO] Building demo 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.3.2:clean (default-clean) @ demo ---
+[INFO] Deleting /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (prepare-agent) @ demo ---
+[INFO] argLine set to -javaagent:/home/marco/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ demo ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 23 source files with javac [debug release 17] to target/classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ demo ---
+[INFO] Copying 2 resources from src/test/resources to target/test-classes
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ demo ---
+[INFO] Changes detected - recompiling the module! :dependency
+[INFO] Compiling 6 source files with javac [debug release 17] to target/test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- surefire:3.1.2:test (default-test) @ demo ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.demo.api.service.FerramentaServiceTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/marco/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.10/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.885 s -- in com.example.demo.api.service.FerramentaServiceTest
+[INFO] Running com.example.demo.api.service.MaterialConstrucaoServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.127 s -- in com.example.demo.api.service.MaterialConstrucaoServiceTest
+[INFO] Running com.example.demo.api.service.FilialServiceTest
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.255 s -- in com.example.demo.api.service.FilialServiceTest
+[INFO] Running com.example.demo.api.controller.MaterialConstrucaoControllerTest
+16:25:47.965 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:47.967 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:47.974 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 6 ms
+16:25:48.271 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.271 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.271 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.451 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.451 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.451 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.465 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.465 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.465 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.617 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.617 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.617 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.081 s -- in com.example.demo.api.controller.MaterialConstrucaoControllerTest
+[INFO] Running com.example.demo.api.controller.FerramentaControllerTest
+16:25:48.700 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.700 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.700 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.737 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.737 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.738 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 1 ms
+16:25:48.765 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.765 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.765 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.786 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.787 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.787 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+16:25:48.802 [main] INFO org.springframework.mock.web.MockServletContext -- Initializing Spring TestDispatcherServlet ''
+16:25:48.803 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Initializing Servlet ''
+16:25:48.803 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet -- Completed initialization in 0 ms
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.185 s -- in com.example.demo.api.controller.FerramentaControllerTest
+[INFO] Running com.example.demo.api.FilialIntegrationTest
+16:25:48.926 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.demo.api.FilialIntegrationTest]: FilialIntegrationTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+16:25:49.091 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.demo.DemoApplication for test class com.example.demo.api.FilialIntegrationTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-26T16:25:49.724-03:00  INFO 422433 --- [           main] c.e.demo.api.FilialIntegrationTest       : Starting FilialIntegrationTest using Java 21.0.8 with PID 422433 (started by marco in /home/marco/apresentacao/api-crud-contrucao/springboot/demo)
+2025-11-26T16:25:49.726-03:00  INFO 422433 --- [           main] c.e.demo.api.FilialIntegrationTest       : The following 1 profile is active: "test"
+2025-11-26T16:25:50.582-03:00  INFO 422433 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-26T16:25:50.665-03:00  INFO 422433 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 3 JPA repository interfaces.
+2025-11-26T16:25:51.452-03:00  INFO 422433 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2025-11-26T16:25:51.468-03:00  INFO 422433 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-26T16:25:51.468-03:00  INFO 422433 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-26T16:25:51.543-03:00  INFO 422433 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-26T16:25:51.543-03:00  INFO 422433 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1795 ms
+2025-11-26T16:25:51.726-03:00  INFO 422433 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-26T16:25:51.813-03:00  INFO 422433 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-11-26T16:25:51.887-03:00  INFO 422433 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-26T16:25:52.047-03:00  INFO 422433 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-26T16:25:52.086-03:00  INFO 422433 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-26T16:25:52.449-03:00  INFO 422433 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:loja-int user=SA
+2025-11-26T16:25:52.451-03:00  INFO 422433 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-26T16:25:52.485-03:00  WARN 422433 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-26T16:25:53.561-03:00  INFO 422433 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-26T16:25:53.564-03:00  INFO 422433 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-26T16:25:54.133-03:00  WARN 422433 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-26T16:25:54.455-03:00  INFO 422433 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c828716, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@566a0068, org.springframework.security.web.context.SecurityContextHolderFilter@4fa3cc58, org.springframework.security.web.header.HeaderWriterFilter@63efe85f, org.springframework.security.web.authentication.logout.LogoutFilter@49e1826f, com.example.demo.api.security.JwtAuthenticationFilter@22f67246, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ec33366, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@368b556a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@184ed41, org.springframework.security.web.session.SessionManagementFilter@a66bf4a, org.springframework.security.web.access.ExceptionTranslationFilter@28996e52, org.springframework.security.web.access.intercept.AuthorizationFilter@374c1eaa]
+2025-11-26T16:25:54.739-03:00  INFO 422433 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring TestDispatcherServlet ''
+2025-11-26T16:25:54.739-03:00  INFO 422433 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-11-26T16:25:54.739-03:00  INFO 422433 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2025-11-26T16:25:54.787-03:00  INFO 422433 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 33971 (http) with context path ''
+2025-11-26T16:25:54.796-03:00  INFO 422433 --- [           main] c.e.demo.api.FilialIntegrationTest       : Started FilialIntegrationTest in 5.527 seconds (process running for 11.464)
+2025-11-26T16:25:54.825-03:00  WARN 422433 --- [           main] o.s.w.s.h.HandlerMappingIntrospector     : Cache miss for REQUEST dispatch to '/api/FILIAL' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.393 s -- in com.example.demo.api.FilialIntegrationTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ demo ---
+[INFO] Building jar: /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/demo-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.2.0:repackage (repackage) @ demo ---
+[INFO] Replacing main artifact /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/demo-0.0.1-SNAPSHOT.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/demo-0.0.1-SNAPSHOT.jar.original
+[INFO] 
+[INFO] --- checkstyle:3.3.1:check (checkstyle-verify) @ demo ---
+[INFO] Iniciando a auditoria...
+Auditoria completa.
+[INFO] You have 0 Checkstyle violations.
+[INFO] 
+[INFO] >>> pmd:3.21.2:check (pmd-verify) > :pmd @ demo >>>
+[INFO] 
+[INFO] --- pmd:3.21.2:pmd (pmd) @ demo ---
+[INFO] PMD version: 6.55.0
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] 
+[INFO] <<< pmd:3.21.2:check (pmd-verify) < :pmd @ demo <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.21.2:check (pmd-verify) @ demo ---
+[INFO] PMD version: 6.55.0
+[INFO] 
+[INFO] 
+[INFO] >>> pmd:3.21.2:cpd-check (pmd-verify) > :cpd @ demo >>>
+[INFO] 
+[INFO] --- pmd:3.21.2:cpd (cpd) @ demo ---
+[INFO] PMD version: 6.55.0
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] 
+[INFO] <<< pmd:3.21.2:cpd-check (pmd-verify) < :cpd @ demo <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.21.2:cpd-check (pmd-verify) @ demo ---
+[INFO] PMD version: 6.55.0
+[INFO] 
+[INFO] 
+[INFO] >>> spotbugs:4.8.3.0:check (spotbugs-verify) > :spotbugs @ demo >>>
+[INFO] 
+[INFO] --- spotbugs:4.8.3.0:spotbugs (spotbugs) @ demo ---
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] 
+[INFO] <<< spotbugs:4.8.3.0:check (spotbugs-verify) < :spotbugs @ demo <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs:4.8.3.0:check (spotbugs-verify) @ demo ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] --- jacoco:0.8.11:report (report) @ demo ---
+[INFO] Loading execution data file /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/jacoco.exec
+[INFO] Analyzed bundle 'demo' with 27 classes
+[INFO] 
+[INFO] --- site:3.12.1:site (default-site) @ demo ---
+[INFO] configuring report plugin org.apache.maven.plugins:maven-checkstyle-plugin:3.3.1
+[INFO] 1 report configured for maven-checkstyle-plugin:3.3.1: checkstyle
+[INFO] configuring report plugin org.apache.maven.plugins:maven-pmd-plugin:3.21.2
+[INFO] 2 reports detected for maven-pmd-plugin:3.21.2: cpd, pmd
+[INFO] configuring report plugin com.github.spotbugs:spotbugs-maven-plugin:4.8.3.0
+[INFO] 1 report detected for spotbugs-maven-plugin:4.8.3.0: spotbugs
+[INFO] configuring report plugin org.jacoco:jacoco-maven-plugin:0.8.11
+[INFO] 1 report configured for jacoco-maven-plugin:0.8.11: report
+[INFO] configuring report plugin org.apache.maven.plugins:maven-jxr-plugin:3.3.2
+[INFO] preparing maven-jxr-plugin:jxr report requires 'generate-sources' forked phase execution
+[INFO] 
+[INFO] >>> jxr:3.3.2:jxr > generate-sources @ demo >>>
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (prepare-agent) @ demo ---
+[INFO] argLine set to -javaagent:/home/marco/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/jacoco.exec
+[INFO] 
+[INFO] <<< jxr:3.3.2:jxr < generate-sources @ demo <<<
+[INFO] 
+[INFO] 'generate-sources' forked phase execution for maven-jxr-plugin:jxr report preparation done
+[INFO] preparing maven-jxr-plugin:test-jxr report requires 'generate-test-sources' forked phase execution
+[INFO] 
+[INFO] >>> jxr:3.3.2:test-jxr > generate-test-sources @ demo >>>
+[INFO] 
+[INFO] --- jacoco:0.8.11:prepare-agent (prepare-agent) @ demo ---
+[INFO] argLine set to -javaagent:/home/marco/.m2/repository/org/jacoco/org.jacoco.agent/0.8.11/org.jacoco.agent-0.8.11-runtime.jar=destfile=/home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/jacoco.exec
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ demo ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ demo ---
+[INFO] Changes detected - recompiling the module! :source
+[INFO] Compiling 23 source files with javac [debug release 17] to target/classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] <<< jxr:3.3.2:test-jxr < generate-test-sources @ demo <<<
+[INFO] 
+[INFO] 'generate-test-sources' forked phase execution for maven-jxr-plugin:test-jxr report preparation done
+[INFO] 4 reports detected for maven-jxr-plugin:3.3.2: jxr, jxr-no-fork, test-jxr, test-jxr-no-fork
+[WARNING] Report plugin org.apache.maven.plugins:maven-project-info-reports-plugin has an empty version.
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[INFO] configuring report plugin org.apache.maven.plugins:maven-project-info-reports-plugin:3.9.0
+[INFO] 15 reports detected for maven-project-info-reports-plugin:3.9.0: ci-management, dependencies, dependency-info, dependency-management, distribution-management, index, issue-management, licenses, mailing-lists, modules, plugin-management, plugins, scm, summary, team
+[INFO] PMD version: 6.55.0
+[INFO] PMD version: 6.55.0
+[INFO] Fork Value is true
+[INFO] Done SpotBugs Analysis....
+[INFO] Rendering site with default locale English (en)
+[WARNING] Unable to find a URL to the parent project. The parent menu will NOT be added.
+[INFO] Relativizing decoration links with respect to localized project URL: https://spring.io/projects/spring-boot/demo
+[INFO] Rendering content with org.apache.maven.skins:maven-default-skin:jar:1.3 skin.
+[INFO] Skipped "Source Xref" report (maven-jxr-plugin:3.3.2:jxr-no-fork), file "xref/index.html" already exists.
+[INFO] Skipped "Test Source Xref" report (maven-jxr-plugin:3.3.2:test-jxr-no-fork), file "xref-test/index.html" already exists.
+[INFO] Generating "Checkstyle" report    --- maven-checkstyle-plugin:3.3.1:checkstyle
+[INFO] Generating "CPD" report           --- maven-pmd-plugin:3.21.2:cpd
+[INFO] Generating "PMD" report           --- maven-pmd-plugin:3.21.2:pmd
+[INFO] Generating "SpotBugs" report      --- spotbugs-maven-plugin:4.8.3.0:spotbugs
+[INFO] Generating "JaCoCo" report        --- jacoco-maven-plugin:0.8.11:report
+[INFO] Loading execution data file /home/marco/apresentacao/api-crud-contrucao/springboot/demo/target/jacoco.exec
+[INFO] Analyzed bundle 'demo' with 27 classes
+[INFO] Generating "Source Xref" report   --- maven-jxr-plugin:3.3.2:jxr
+[INFO] Generating "Test Source Xref" report --- maven-jxr-plugin:3.3.2:test-jxr
+[INFO] Generating "Dependencies" report  --- maven-project-info-reports-plugin:3.9.0:dependencies
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Dependency File Details' to 'Dependency_File_Details'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Dependency Tree' to 'Dependency_Tree'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependencies' to 'Project_Dependencies'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependencies_compile' to 'Project_Dependencies_compile'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependencies_runtime' to 'Project_Dependencies_runtime'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependencies_test' to 'Project_Dependencies_test'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependency Graph' to 'Project_Dependency_Graph'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Transitive Dependencies' to 'Project_Transitive_Dependencies'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Transitive Dependencies_compile' to 'Project_Transitive_Dependencies_compile'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Transitive Dependencies_runtime' to 'Project_Transitive_Dependencies_runtime'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Transitive Dependencies_test' to 'Project_Transitive_Dependencies_test'
+[INFO] Generating "Maven Coordinates" report --- maven-project-info-reports-plugin:3.9.0:dependency-info
+[WARNING] An issue has occurred with maven-project-info-reports-plugin:3.9.0:dependency-info report, skipping LinkageError 'void org.apache.maven.doxia.sink.Sink.verbatim()', please report an issue to Maven dev team.
+java.lang.NoSuchMethodError: 'void org.apache.maven.doxia.sink.Sink.verbatim()'
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.verbatimText (AbstractMavenReportRenderer.java:346)
+    at org.apache.maven.report.projectinfo.DependencyInformationReport$DependencyInformationRenderer.renderDependencyInfo (DependencyInformationReport.java:218)
+    at org.apache.maven.report.projectinfo.DependencyInformationReport$DependencyInformationRenderer.renderMavenDependencyCoordinates (DependencyInformationReport.java:171)
+    at org.apache.maven.report.projectinfo.DependencyInformationReport$DependencyInformationRenderer.renderBody (DependencyInformationReport.java:138)
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.render (AbstractMavenReportRenderer.java:76)
+    at org.apache.maven.report.projectinfo.DependencyInformationReport.executeReport (DependencyInformationReport.java:88)
+    at org.apache.maven.reporting.AbstractMavenReport.generate (AbstractMavenReport.java:358)
+    at org.apache.maven.plugins.site.render.ReportDocumentRenderer.renderDocument (ReportDocumentRenderer.java:226)
+    at org.apache.maven.doxia.siterenderer.DefaultSiteRenderer.render (DefaultSiteRenderer.java:348)
+    at org.apache.maven.plugins.site.render.SiteMojo.renderLocale (SiteMojo.java:194)
+    at org.apache.maven.plugins.site.render.SiteMojo.execute (SiteMojo.java:143)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:283)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:226)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:407)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:348)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+    at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+    at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Apache Maven' to 'Apache_Maven'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Maven Coordinates' to 'Maven_Coordinates'
+[INFO] Generating "Dependency Management" report --- maven-project-info-reports-plugin:3.9.0:dependency-management
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Dependency Management' to 'Project_Dependency_Management'
+[INFO] Generating "About" report         --- maven-project-info-reports-plugin:3.9.0:index
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'About demo' to 'About_demo'
+[INFO] Generating "Licenses" report      --- maven-project-info-reports-plugin:3.9.0:licenses
+[WARNING] An issue has occurred with maven-project-info-reports-plugin:3.9.0:licenses report, skipping LinkageError 'void org.apache.maven.doxia.sink.Sink.verbatim()', please report an issue to Maven dev team.
+java.lang.NoSuchMethodError: 'void org.apache.maven.doxia.sink.Sink.verbatim()'
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.verbatimText (AbstractMavenReportRenderer.java:346)
+    at org.apache.maven.report.projectinfo.LicensesReport$LicensesRenderer.renderLicenseContent (LicensesReport.java:338)
+    at org.apache.maven.report.projectinfo.LicensesReport$LicensesRenderer.renderBody (LicensesReport.java:297)
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.render (AbstractMavenReportRenderer.java:76)
+    at org.apache.maven.report.projectinfo.LicensesReport.executeReport (LicensesReport.java:136)
+    at org.apache.maven.reporting.AbstractMavenReport.generate (AbstractMavenReport.java:358)
+    at org.apache.maven.plugins.site.render.ReportDocumentRenderer.renderDocument (ReportDocumentRenderer.java:226)
+    at org.apache.maven.doxia.siterenderer.DefaultSiteRenderer.render (DefaultSiteRenderer.java:348)
+    at org.apache.maven.plugins.site.render.SiteMojo.renderLocale (SiteMojo.java:194)
+    at org.apache.maven.plugins.site.render.SiteMojo.execute (SiteMojo.java:143)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:283)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:226)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:407)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:348)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+    at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+    at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Apache License, Version 2.0' to 'Apache_License_Version_2.0'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Licenses' to 'Project_Licenses'
+[INFO] Generating "Plugin Management" report --- maven-project-info-reports-plugin:3.9.0:plugin-management
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Plugin Management' to 'Project_Plugin_Management'
+[INFO] Generating "Plugins" report       --- maven-project-info-reports-plugin:3.9.0:plugins
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Build Plugins' to 'Project_Build_Plugins'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Report Plugins' to 'Project_Report_Plugins'
+[INFO] Generating "Source Code Management" report --- maven-project-info-reports-plugin:3.9.0:scm
+[WARNING] An issue has occurred with maven-project-info-reports-plugin:3.9.0:scm report, skipping LinkageError 'void org.apache.maven.doxia.sink.Sink.verbatim()', please report an issue to Maven dev team.
+java.lang.NoSuchMethodError: 'void org.apache.maven.doxia.sink.Sink.verbatim()'
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.verbatimLink (AbstractMavenReportRenderer.java:367)
+    at org.apache.maven.report.projectinfo.ScmReport$ScmRenderer.renderWebAccessSection (ScmReport.java:302)
+    at org.apache.maven.report.projectinfo.ScmReport$ScmRenderer.renderBody (ScmReport.java:246)
+    at org.apache.maven.reporting.AbstractMavenReportRenderer.render (AbstractMavenReportRenderer.java:76)
+    at org.apache.maven.report.projectinfo.ScmReport.executeReport (ScmReport.java:145)
+    at org.apache.maven.reporting.AbstractMavenReport.generate (AbstractMavenReport.java:358)
+    at org.apache.maven.plugins.site.render.ReportDocumentRenderer.renderDocument (ReportDocumentRenderer.java:226)
+    at org.apache.maven.doxia.siterenderer.DefaultSiteRenderer.render (DefaultSiteRenderer.java:348)
+    at org.apache.maven.plugins.site.render.SiteMojo.renderLocale (SiteMojo.java:194)
+    at org.apache.maven.plugins.site.render.SiteMojo.execute (SiteMojo.java:143)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:906)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:283)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:206)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:283)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:226)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:407)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:348)
+    at jdk.internal.reflect.DirectMethodHandleAccessor.invoke (DirectMethodHandleAccessor.java:103)
+    at java.lang.reflect.Method.invoke (Method.java:580)
+    at org.apache.maven.wrapper.BootstrapMainStarter.start (BootstrapMainStarter.java:52)
+    at org.apache.maven.wrapper.WrapperExecutor.execute (WrapperExecutor.java:161)
+    at org.apache.maven.wrapper.MavenWrapperMain.main (MavenWrapperMain.java:73)
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Web Browser Access' to 'Web_Browser_Access'
+[INFO] Generating "Summary" report       --- maven-project-info-reports-plugin:3.9.0:summary
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Build Information' to 'Build_Information'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Information' to 'Project_Information'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Organization' to 'Project_Organization'
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Summary' to 'Project_Summary'
+[INFO] Generating "Team" report          --- maven-project-info-reports-plugin:3.9.0:team
+[warn] [XHTML5 Sink] Modified invalid anchor name: 'Project Team' to 'Project_Team'
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  47.191 s
+[INFO] Finished at: 2025-11-26T16:26:26-03:00
+[INFO] ------------------------------------------------------------------------

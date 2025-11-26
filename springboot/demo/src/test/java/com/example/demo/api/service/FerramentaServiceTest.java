@@ -7,7 +7,6 @@ import com.example.demo.api.model.FilialEntity;
 import com.example.demo.api.repository.FerramentaRepository;
 import com.example.demo.api.repository.FilialRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -39,7 +38,6 @@ class FerramentaServiceTest {
     }
 
     @Test
-    @Disabled("Skipped by request")
     void listarTodosDeveRetornarFerramentasMapeadas() {
         FilialEntity filial = FilialEntity.builder()
                 .idFilial(2)
@@ -70,7 +68,6 @@ class FerramentaServiceTest {
     }
 
     @Test
-    @Disabled("Skipped by request")
     void criarDeveSalvarFerramentaComFilialValida() {
         FilialResumoDTO filialResumo = FilialResumoDTO.builder()
                 .idFilial(9)

@@ -7,7 +7,6 @@ import com.example.demo.api.model.MaterialConstrucaoEntity;
 import com.example.demo.api.repository.FilialRepository;
 import com.example.demo.api.repository.MaterialConstrucaoRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -39,7 +38,6 @@ class MaterialConstrucaoServiceTest {
     }
 
     @Test
-    @Disabled("Skipped by request")
     void listarTodosDeveMapearEntidadesParaDTOs() {
         FilialEntity filial = FilialEntity.builder()
                 .idFilial(1)
@@ -71,7 +69,6 @@ class MaterialConstrucaoServiceTest {
     }
 
     @Test
-    @Disabled("Skipped by request")
     void criarDevePersistirMaterialComFilialExistente() {
         FilialResumoDTO filialResumo = FilialResumoDTO.builder()
                 .idFilial(7)
