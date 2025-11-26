@@ -42,15 +42,44 @@ Para encerrar:
 docker compose down
 ```
 
-## Lint (Checkstyle/PMD/SpotBugs)
+## Lint (Checkstyle/PMD/SpotBugs) com Nota de Qualidade
 
-Rode apenas as ferramentas estáticas (sem testes) na pasta `springboot/demo`:
+### Verificação Rápida com Nota (Recomendado)
+
+Execute o script que mostra uma **nota de 0-100** baseada na qualidade do código:
+
+```bash
+cd api-crud-contrucao/springboot/demo
+./quick-lint-score.sh
+```
+
+Este script executa Checkstyle, PMD e SpotBugs e mostra:
+- Número de violações de cada ferramenta
+- Pontuação individual (0-25 pontos cada)
+- **Nota final do lint (0-100)** com conceito (A, B, C, D ou F)
+
+### Verificação Completa com Testes e Cobertura
+
+Para obter a nota completa (0-125) incluindo cobertura de testes:
+
+```bash
+cd api-crud-contrucao/springboot/demo
+./run-quality-check.sh
+```
+
+Este script gera relatórios HTML detalhados em `target/site/` que você pode abrir no navegador.
+
+### Comandos Maven Diretos
+
+Se preferir usar Maven diretamente (sem nota):
 
 ```bash
 cd api-crud-contrucao/springboot/demo
 ./mvnw -DskipTests -Dstyle.color=always \
        checkstyle:check pmd:check spotbugs:check
 ```
+
+📖 Para mais detalhes sobre o sistema de pontuação, veja [springboot/demo/QUALITY_CHECK.md](springboot/demo/QUALITY_CHECK.md)
 
 ## Testes
 
@@ -64,6 +93,10 @@ cd api-crud-contrucao/springboot/demo
        -Dsurefire.useFile=false \
        verify
 ```
+
+Tipos de testes incluídos (em `springboot/demo/src/test/java`):
+- Unitários de serviço (Mockito) em `api/service/*ServiceTest.java` para Filial, Ferramenta e Material de Construção.
+- Integração (MockMvc) em `api/FilialIntegrationTest.java`, subindo o contexto Spring Boot com perfil `test` e banco H2 em memória para validar o endpoint `POST /api/FILIAL` e persistência com senha hash.
 
 ## Endpoints principais
 

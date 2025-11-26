@@ -1,1 +1,4 @@
+com/example/demo/api/service/MaterialConstrucaoServiceTest.class
 com/example/demo/api/FilialIntegrationTest.class
+com/example/demo/api/service/FilialServiceTest.class
+com/example/demo/api/service/FerramentaServiceTest.class

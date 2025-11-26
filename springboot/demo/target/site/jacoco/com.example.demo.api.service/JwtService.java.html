@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JwtService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example.demo.api.service</a> &gt; <span class="el_source">JwtService.java</span></div><h1>JwtService.java</h1><pre class="source lang-java linenums">package com.example.demo.api.service;
+
+import java.nio.charset.StandardCharsets;
+import java.security.Key;
+import java.time.Instant;
+import java.util.Date;
+import java.util.Map;
+import java.util.function.Function;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
+import com.example.demo.api.model.FilialEntity;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
+import lombok.RequiredArgsConstructor;
+
+@Service
+<span class="fc" id="L22">@RequiredArgsConstructor</span>
+public class JwtService {
+
+<span class="fc" id="L25">    private final JwtClock clock = new JwtClock();</span>
+
+    @Value(&quot;${app.security.jwt.secret}&quot;)
+    private String secret;
+
+    @Value(&quot;${app.security.jwt.expiration-millis:3600000}&quot;)
+    private long expirationMillis;
+
+    public String generateToken(FilialEntity filial) {
+<span class="nc" id="L34">        Map&lt;String, Object&gt; claims = Map.of(</span>
+<span class="nc" id="L35">                &quot;filialId&quot;, filial.getIdFilial(),</span>
+<span class="nc" id="L36">                &quot;nome&quot;, filial.getNome()</span>
+        );
+<span class="nc" id="L38">        return buildToken(claims, filial.getLogin());</span>
+    }
+
+    public String extractLogin(String token) {
+<span class="nc" id="L42">        return extractClaim(token, Claims::getSubject);</span>
+    }
+
+    public boolean isTokenValid(String token, String login) {
+<span class="nc" id="L46">        String username = extractLogin(token);</span>
+<span class="nc bnc" id="L47" title="All 6 branches missed.">        return username != null &amp;&amp; username.equals(login) &amp;&amp; !isTokenExpired(token);</span>
+    }
+
+    public Instant extractExpirationInstant(String token) {
+<span class="nc" id="L51">        return extractClaim(token, claims -&gt; claims.getExpiration().toInstant());</span>
+    }
+
+    public long getExpirationMillis() {
+<span class="nc" id="L55">        return expirationMillis;</span>
+    }
+
+    private String buildToken(Map&lt;String, Object&gt; claims, String subject) {
+<span class="nc" id="L59">        Date issuedAt = Date.from(clock.now());</span>
+<span class="nc" id="L60">        Date expiration = new Date(issuedAt.getTime() + expirationMillis);</span>
+<span class="nc" id="L61">        return Jwts.builder()</span>
+<span class="nc" id="L62">                .setClaims(claims)</span>
+<span class="nc" id="L63">                .setSubject(subject)</span>
+<span class="nc" id="L64">                .setIssuedAt(issuedAt)</span>
+<span class="nc" id="L65">                .setExpiration(expiration)</span>
+<span class="nc" id="L66">                .signWith(getSigningKey(), SignatureAlgorithm.HS256)</span>
+<span class="nc" id="L67">                .compact();</span>
+    }
+
+    private boolean isTokenExpired(String token) {
+<span class="nc" id="L71">        return extractExpirationInstant(token).isBefore(clock.now());</span>
+    }
+
+    private &lt;T&gt; T extractClaim(String token, Function&lt;Claims, T&gt; resolver) {
+<span class="nc" id="L75">        Claims claims = Jwts.parserBuilder()</span>
+<span class="nc" id="L76">                .setSigningKey(getSigningKey())</span>
+<span class="nc" id="L77">                .build()</span>
+<span class="nc" id="L78">                .parseClaimsJws(token)</span>
+<span class="nc" id="L79">                .getBody();</span>
+<span class="nc" id="L80">        return resolver.apply(claims);</span>
+    }
+
+    private Key getSigningKey() {
+<span class="nc bnc" id="L84" title="All 2 branches missed.">        if (!StringUtils.hasText(secret)) {</span>
+<span class="nc" id="L85">            throw new IllegalStateException(&quot;JWT secret is not configured (app.security.jwt.secret)&quot;);</span>
+        }
+<span class="nc" id="L87">        byte[] keyBytes = secret.getBytes(StandardCharsets.UTF_8);</span>
+<span class="nc" id="L88">        return Keys.hmacShaKeyFor(keyBytes);</span>
+    }
+
+    /**
+     * Pequeno wrapper para facilitar testes no futuro.
+     */
+<span class="fc" id="L94">    static class JwtClock {</span>
+        Instant now() {
+<span class="nc" id="L96">            return Instant.now();</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FerramentaService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">demo</a> &gt; <a href="index.source.html" class="el_package">com.example.demo.api.service</a> &gt; <span class="el_source">FerramentaService.java</span></div><h1>FerramentaService.java</h1><pre class="source lang-java linenums">package com.example.demo.api.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.example.demo.api.dto.FerramentaDTO;
+import com.example.demo.api.dto.FilialResumoDTO;
+import com.example.demo.api.model.FerramentaEntity;
+import com.example.demo.api.model.FilialEntity;
+import com.example.demo.api.repository.FerramentaRepository;
+import com.example.demo.api.repository.FilialRepository;
+import lombok.RequiredArgsConstructor;
+
+@Service
+<span class="fc" id="L20">@RequiredArgsConstructor</span>
+public class FerramentaService {
+
+    private final FerramentaRepository ferramentaRepository;
+    private final FilialRepository filialRepository;
+
+    @Transactional(readOnly = true)
+    public List&lt;FerramentaDTO&gt; listarTodos() {
+<span class="nc" id="L28">        return ferramentaRepository.findAll()</span>
+<span class="nc" id="L29">                .stream()</span>
+<span class="nc" id="L30">                .map(this::mapearParaDTO)</span>
+<span class="nc" id="L31">                .toList();</span>
+    }
+
+    @Transactional(readOnly = true)
+    public Optional&lt;FerramentaDTO&gt; buscarPorId(Integer id) {
+<span class="nc" id="L36">        return ferramentaRepository.findById(id)</span>
+<span class="nc" id="L37">                .map(this::mapearParaDTO);</span>
+    }
+
+    @Transactional
+    public FerramentaDTO criar(FerramentaDTO dto) {
+<span class="nc" id="L42">        FerramentaEntity entity = new FerramentaEntity();</span>
+<span class="nc" id="L43">        atualizarCampos(entity, dto);</span>
+<span class="nc" id="L44">        FerramentaEntity salvo = ferramentaRepository.save(entity);</span>
+<span class="nc" id="L45">        return mapearParaDTO(salvo);</span>
+    }
+
+    @Transactional
+    public Optional&lt;FerramentaDTO&gt; atualizar(Integer id, FerramentaDTO dto) {
+<span class="nc" id="L50">        return ferramentaRepository.findById(id)</span>
+<span class="nc" id="L51">                .map(entity -&gt; {</span>
+<span class="nc" id="L52">                    atualizarCampos(entity, dto);</span>
+<span class="nc" id="L53">                    FerramentaEntity salvo = ferramentaRepository.save(entity);</span>
+<span class="nc" id="L54">                    return mapearParaDTO(salvo);</span>
+                });
+    }
+
+    @Transactional
+    public boolean deletar(Integer id) {
+<span class="nc bnc" id="L60" title="All 2 branches missed.">        if (!ferramentaRepository.existsById(id)) {</span>
+<span class="nc" id="L61">            return false;</span>
+        }
+<span class="nc" id="L63">        ferramentaRepository.deleteById(id);</span>
+<span class="nc" id="L64">        return true;</span>
+    }
+
+    private void atualizarCampos(FerramentaEntity entity, FerramentaDTO dto) {
+<span class="nc bnc" id="L68" title="All 2 branches missed.">        if (dto == null) {</span>
+<span class="nc" id="L69">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;Dados da ferramenta sao obrigatorios&quot;);</span>
+        }
+
+<span class="nc" id="L72">        entity.setCodigoProduto(dto.getCodigoProduto());</span>
+<span class="nc" id="L73">        entity.setValor(dto.getValor());</span>
+<span class="nc" id="L74">        entity.setMarca(dto.getMarca());</span>
+<span class="nc" id="L75">        entity.setNome(dto.getNome());</span>
+<span class="nc" id="L76">        entity.setQtdPacote(dto.getQtdPacote());</span>
+<span class="nc" id="L77">        entity.setFilial(obterFilial(dto.getFilial()));</span>
+<span class="nc" id="L78">    }</span>
+
+    private FilialEntity obterFilial(FilialResumoDTO filialResumoDTO) {
+<span class="nc bnc" id="L81" title="All 4 branches missed.">        if (filialResumoDTO == null || filialResumoDTO.getIdFilial() == null) {</span>
+<span class="nc" id="L82">            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, &quot;Filial da ferramenta e obrigatoria&quot;);</span>
+        }
+
+<span class="nc" id="L85">        return filialRepository.findById(filialResumoDTO.getIdFilial())</span>
+<span class="nc" id="L86">                .orElseThrow(() -&gt; new ResponseStatusException(HttpStatus.NOT_FOUND, &quot;Filial nao encontrada&quot;));</span>
+    }
+
+    private FerramentaDTO mapearParaDTO(FerramentaEntity entity) {
+<span class="nc bnc" id="L90" title="All 2 branches missed.">        if (entity == null) {</span>
+<span class="nc" id="L91">            return null;</span>
+        }
+
+<span class="nc" id="L94">        return FerramentaDTO.builder()</span>
+<span class="nc" id="L95">                .codFerramenta(entity.getCodFerramenta())</span>
+<span class="nc" id="L96">                .codigoProduto(entity.getCodigoProduto())</span>
+<span class="nc" id="L97">                .valor(entity.getValor())</span>
+<span class="nc" id="L98">                .marca(entity.getMarca())</span>
+<span class="nc" id="L99">                .nome(entity.getNome())</span>
+<span class="nc" id="L100">                .qtdPacote(entity.getQtdPacote())</span>
+<span class="nc" id="L101">                .filial(mapearFilialResumo(entity.getFilial()))</span>
+<span class="nc" id="L102">                .build();</span>
+    }
+
+    private FilialResumoDTO mapearFilialResumo(FilialEntity filial) {
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        if (filial == null) {</span>
+<span class="nc" id="L107">            return null;</span>
+        }
+
+<span class="nc" id="L110">        return FilialResumoDTO.builder()</span>
+<span class="nc" id="L111">                .idFilial(filial.getIdFilial())</span>
+<span class="nc" id="L112">                .nome(filial.getNome())</span>
+<span class="nc" id="L113">                .build();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
