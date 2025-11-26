@@ -22,12 +22,12 @@ Serviço principal que expõe os recursos de filiais, ferramentas e materiais de
 | `PORT` | Porta interna da API | `8089` |
 | `SPRING_SQL_INIT_MODE` | Mantido como `always` para rodar `schema.sql` | `always` |
 
-> O banco é compartilhado com `api-autentic`, logo essa stack deve subir antes da API de autenticação.
+> O banco é compartilhado com `api-autenticacao` via porta 3307 do host, então suba esta stack antes da API de autenticação.
 
 ## Como executar
 
 ```bash
-cd API-LOJA-DE-CONSTRU-O
+cd api-crud-contrucao
 docker compose up -d --build
 ```
 
@@ -42,12 +42,22 @@ Para encerrar:
 docker compose down
 ```
 
+## Lint (Checkstyle/PMD/SpotBugs)
+
+Rode apenas as ferramentas estáticas (sem testes) na pasta `springboot/demo`:
+
+```bash
+cd api-crud-contrucao/springboot/demo
+./mvnw -DskipTests -Dstyle.color=always \
+       checkstyle:check pmd:check spotbugs:check
+```
+
 ## Testes
 
 Rode a suíte completa (Checkstyle/PMD/SpotBugs + testes) na pasta `springboot/demo`:
 
 ```bash
-cd API-LOJA-DE-CONSTRU-O/springboot/demo
+cd api-crud-contrucao/springboot/demo
 ./mvnw -Dstyle.color=always \
        -Dsurefire.reportFormat=plain \
        -Dsurefire.printSummary=true \
@@ -65,4 +75,4 @@ cd API-LOJA-DE-CONSTRU-O/springboot/demo
 | `GET /api/MATERIAL-CONSTRUCAO` | Lista materiais de construção |
 | `POST/PUT/DELETE /api/FERRAMENTA|MATERIAL-CONSTRUCAO` | CRUD completo via payloads `FerramentaDTO`/`MaterialConstrucaoDTO` |
 
-Todas as rotas exigem o token emitido por `api-autentic`, exceto o `POST /api/FILIAL`, liberado para criação de novos usuários.
+Todas as rotas exigem o token emitido por `api-autenticacao`, exceto o `POST /api/FILIAL`, liberado para criação de novos usuários.
