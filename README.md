@@ -1,9 +1,6 @@
 # API Loja de Construção
 
-[![CI](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/ci.yml/badge.svg)](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/ci.yml)
-[![CD](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/cd.yml/badge.svg)](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/cd.yml)
-[![Security Scan](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/security.yml/badge.svg)](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/security.yml)
-[![codecov](https://codecov.io/gh/Gerencia-de-Estoque/api-crud-contrucao/branch/main/graph/badge.svg)](https://codecov.io/gh/Gerencia-de-Estoque/api-crud-contrucao)
+[![CI - Testes Automáticos](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/ci.yml/badge.svg)](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/ci.yml)
 
 Serviço principal que expõe os recursos de filiais, ferramentas e materiais de construção. Ele também provisiona o MySQL utilizado por toda a stack.
 
@@ -115,57 +112,49 @@ Tipos de testes incluídos (em `springboot/demo/src/test/java`):
 
 Todas as rotas exigem o token emitido por `api-autenticacao`, exceto o `POST /api/FILIAL`, liberado para criação de novos usuários.
 
-## CI/CD Pipeline
+## CI - Testes Automáticos
 
-Este projeto utiliza GitHub Actions para automação de integração e entrega contínua.
+Este projeto utiliza GitHub Actions para executar testes automaticamente a cada commit.
 
-### Workflows Configurados
+### O que é executado automaticamente
 
-#### 🔨 CI - Continuous Integration ([ci.yml](.github/workflows/ci.yml))
-Executado em push/PR para `main` e `develop`:
-- **Build and Test**: Compila o projeto, executa testes unitários e de integração
-- **Code Quality**: Análise com Checkstyle, PMD, SpotBugs e SonarCloud
-- **Coverage**: Geração de relatório JaCoCo e envio para Codecov
-- **Docker Build**: Constrói e publica imagem Docker no Docker Hub
+Toda vez que você faz push ou abre um Pull Request para `main` ou `develop`, o workflow CI executa:
 
-#### 🚀 CD - Continuous Deployment ([cd.yml](.github/workflows/cd.yml))
-Executado em push para `main` ou tags:
-- **Deploy Production**: Deploy automático para Railway
-- **Docker Release**: Publicação de imagem Docker com versionamento
-- **GitHub Release**: Criação de release com changelog e artefatos
-- **Health Check**: Verificação de saúde da aplicação após deploy
+- ✅ **Build**: Compila o projeto com Maven
+- ✅ **Testes Unitários**: Executa todos os testes em `src/test/java`
+- ✅ **Testes de Integração**: Valida endpoints e persistência
+- ✅ **Cobertura de Código**: Gera relatório JaCoCo
+- ✅ **Análise de Qualidade**: Checkstyle, PMD e SpotBugs (avisos apenas)
 
-#### 🔒 Security Scan ([security.yml](.github/workflows/security.yml))
-Executado semanalmente e em push/PR:
-- **Dependency Check**: Análise de vulnerabilidades com OWASP Dependency Check
-- **Trivy Scan**: Scan de vulnerabilidades em containers
-- **CodeQL**: Análise de segurança do código
+### Como funciona
 
-### Secrets Necessários
-
-Para que os workflows funcionem corretamente, configure os seguintes secrets no GitHub:
+**Nenhuma configuração necessária!** O workflow funciona automaticamente assim que você fizer push:
 
 ```bash
-# Docker Hub
-DOCKER_USERNAME=seu-usuario-docker
-DOCKER_PASSWORD=sua-senha-docker
-
-# Railway (Deploy)
-RAILWAY_TOKEN=seu-token-railway
-
-# Code Quality (Opcional)
-SONAR_TOKEN=seu-token-sonarcloud
-CODECOV_TOKEN=seu-token-codecov
+git add .
+git commit -m "sua mensagem"
+git push origin main
 ```
 
-**Como adicionar secrets:**
-1. Acesse: Settings → Secrets and variables → Actions
-2. Clique em "New repository secret"
-3. Adicione cada secret listado acima
+O GitHub Actions vai:
+1. Baixar o código
+2. Configurar Java 17
+3. Compilar com Maven
+4. Executar todos os testes
+5. Mostrar o resultado (✅ passou ou ❌ falhou)
 
-### Status dos Workflows
+### Acompanhar execução
 
-Você pode acompanhar o status de cada workflow:
-- [CI Workflow](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/ci.yml)
-- [CD Workflow](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/cd.yml)
-- [Security Workflow](https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions/workflows/security.yml)
+Veja o status dos testes em tempo real:
+- **Badge no README**: mostra se os testes estão passando
+- **GitHub Actions**: https://github.com/Gerencia-de-Estoque/api-crud-contrucao/actions
+- **Pull Requests**: status aparece automaticamente antes do merge
+
+### Executar testes localmente
+
+Antes de fazer push, você pode testar localmente:
+
+```bash
+cd springboot/demo
+./mvnw clean test
+```
