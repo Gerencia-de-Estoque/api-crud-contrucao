@@ -35,14 +35,15 @@ class FilialServiceTest {
     @Mock
     private FilialRepository filialRepository;
 
-    @Mock
-    private PasswordEncoder passwordEncoder;
+@Mock
+private PasswordEncoder passwordEncoder;
 
-    @InjectMocks
-    private FilialService filialService;
+@InjectMocks
+private FilialService filialService;
 
-    @Test
-    void criarFilialSalvaComSenhaCodificadaEAtivoDefault() {
+// Testes unitarios de servico (sem subir contexto Spring)
+@Test
+void criarFilialSalvaComSenhaCodificadaEAtivoDefault() {
         FilialResumoDTO dto = FilialResumoDTO.builder()
                 .nome("Loja Central")
                 .login("central")
@@ -86,10 +87,11 @@ class FilialServiceTest {
         verify(filialRepository, never()).save(any());
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    @ValueSource(strings = {" ", "   "})
-    void criarFilialComNomeInvalidoLancaBadRequest(String nomeInvalido) {
+// Teste parametrizado (nomes invalidos)
+@ParameterizedTest
+@NullAndEmptySource
+@ValueSource(strings = {" ", "   "})
+void criarFilialComNomeInvalidoLancaBadRequest(String nomeInvalido) {
         FilialResumoDTO dto = FilialResumoDTO.builder()
                 .nome(nomeInvalido)
                 .login("usuario")
@@ -102,10 +104,11 @@ class FilialServiceTest {
         verify(filialRepository, never()).save(any());
     }
 
-    @ParameterizedTest
-    @NullAndEmptySource
-    @ValueSource(strings = {" ", "   "})
-    void criarFilialComLoginInvalidoLancaBadRequest(String loginInvalido) {
+// Teste parametrizado (logins invalidos)
+@ParameterizedTest
+@NullAndEmptySource
+@ValueSource(strings = {" ", "   "})
+void criarFilialComLoginInvalidoLancaBadRequest(String loginInvalido) {
         FilialResumoDTO dto = FilialResumoDTO.builder()
                 .nome("Filial X")
                 .login(loginInvalido)

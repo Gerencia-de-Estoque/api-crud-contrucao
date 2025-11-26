@@ -26,6 +26,7 @@ import com.example.demo.api.dto.FilialResumoDTO;
 import com.example.demo.api.service.FerramentaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// Testes unitarios da camada de controller (MockMvc standalone)
 @ExtendWith(MockitoExtension.class)
 class FerramentaControllerTest {
 

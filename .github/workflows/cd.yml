@@ -1,0 +1,142 @@
+name: CD - Continuous Deployment
+
+on:
+  push:
+    branches: [ main ]
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://api-crud-contrucao.up.railway.app
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Deploy to Railway
+      uses: bervProject/railway-deploy@main
+      with:
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
+        service: api-crud-contrucao
+
+    - name: Wait for deployment
+      run: sleep 30
+
+    - name: Health check
+      run: |
+        response=$(curl -s -o /dev/null -w "%{http_code}" https://api-crud-contrucao.up.railway.app/actuator/health || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "Health check passed!"
+        else
+          echo "Health check failed with status: $response"
+          exit 1
+        fi
+      continue-on-error: true
+
+  deploy-docker:
+    name: Deploy Docker Image
+    runs-on: ubuntu-latest
+    needs: []
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Extract version from tag
+      id: get_version
+      run: |
+        if [[ $GITHUB_REF == refs/tags/* ]]; then
+          VERSION=${GITHUB_REF#refs/tags/}
+        else
+          VERSION=latest
+        fi
+        echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+
+    - name: Build and push production image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        tags: |
+          ${{ secrets.DOCKER_USERNAME }}/api-crud-contrucao:${{ steps.get_version.outputs.VERSION }}
+          ${{ secrets.DOCKER_USERNAME }}/api-crud-contrucao:latest
+        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/api-crud-contrucao:buildcache
+        cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/api-crud-contrucao:buildcache,mode=max
+
+  create-release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: [deploy-docker]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build package
+      working-directory: ./springboot/demo
+      run: mvn -B package -DskipTests
+
+    - name: Generate changelog
+      id: changelog
+      run: |
+        echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
+        git log --pretty=format:"- %s (%h)" $(git describe --tags --abbrev=0 HEAD^)..HEAD >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        body: |
+          ## Changes in this release
+          ${{ steps.changelog.outputs.CHANGELOG }}
+
+          ## Docker Image
+          ```bash
+          docker pull ${{ secrets.DOCKER_USERNAME }}/api-crud-contrucao:${{ github.ref_name }}
+          ```
+        files: |
+          springboot/demo/target/*.jar
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  notify-deployment:
+    name: Notify Deployment Status
+    runs-on: ubuntu-latest
+    needs: [deploy-production, deploy-docker]
+    if: always()
+
+    steps:
+    - name: Send notification
+      run: |
+        if [ "${{ needs.deploy-production.result }}" = "success" ] && [ "${{ needs.deploy-docker.result }}" = "success" ]; then
+          echo "Deployment successful!"
+        else
+          echo "Deployment failed or was cancelled"
+        fi

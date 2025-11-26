@@ -26,6 +26,7 @@ import com.example.demo.api.dto.MaterialConstrucaoDTO;
 import com.example.demo.api.service.MaterialConstrucaoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+// Testes unitarios da camada de controller (MockMvc standalone)
 @ExtendWith(MockitoExtension.class)
 class MaterialConstrucaoControllerTest {
 
